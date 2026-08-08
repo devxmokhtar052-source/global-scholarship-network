@@ -15,17 +15,17 @@
       </div>
 
       <div class="col-lg-6">
-        <h2 class="fw-bold">Fully Funded DAAD Scholarship</h2>
+        <h2 class="fw-bold">{{ scholarship.title }}</h2>
 
         <hr />
 
-        <p><strong>Country:</strong> Germany</p>
+        <p><strong>Country:</strong> {{ scholarship.country }}</p>
 
-        <p><strong>University:</strong> DAAD</p>
+        <p><strong>University:</strong> {{ scholarship.university }}</p>
 
-        <p><strong>Degree:</strong> Masters / PhD</p>
+        <p><strong>Degree:</strong> {{ scholarship.degree }}</p>
 
-        <p><strong>Deadline:</strong> 31 October 2026</p>
+        <p><strong>Deadline:</strong> {{ scholarship.deadline }}</p>
       </div>
     </div>
 
@@ -34,47 +34,37 @@
     <h3 class="mb-4">Benefits</h3>
 
     <ul class="list-group mb-5">
-      <li class="list-group-item">✔ Full Tuition Fee</li>
-
-      <li class="list-group-item">✔ Monthly Stipend</li>
-
-      <li class="list-group-item">✔ Air Ticket</li>
-
-      <li class="list-group-item">✔ Health Insurance</li>
+      {% for benefit in scholarship.benefits.split(',') %}
+      <li class="list-group-item">✔ {{ benefit.strip() }}</li>
+      {% endfor %}
     </ul>
+
     <hr class="my-5" />
 
     <h3 class="mb-4">Eligibility</h3>
 
     <ul class="list-group mb-5">
-      <li class="list-group-item">✔ Bachelor's Degree</li>
+      {% for item in scholarship.eligibility.split(',') %}
+      <li class="list-group-item">✔ {{ item.strip() }}</li>
+      {% endfor %}
+    </ul>
 
-      <li class="list-group-item">
-        ✔ English Proficiency (IELTS/TOEFL if required)
-      </li>
+    <h3 class="mb-4">Required Documents</h3>
 
-      <li class="list-group-item">✔ Good Academic Record</li>
-
-      <li class="list-group-item">✔ Open to International Students</li>
-      <hr class="my-5" />
-
-      <h3 class="mb-4">Required Documents</h3>
-
-      <ul class="list-group mb-5">
-        <li class="list-group-item">✔ Updated CV</li>
-
-        <li class="list-group-item">✔ Academic Transcripts</li>
-
-        <li class="list-group-item">✔ Passport Copy</li>
-
-        <li class="list-group-item">✔ Recommendation Letter</li>
-
-        <li class="list-group-item">✔ Motivation Letter</li>
-      </ul>
+    <ul class="list-group mb-5">
+      {% for document in scholarship.documents.split(',') %}
+      <li class="list-group-item">✔ {{ document.strip() }}</li>
+      {% endfor %}
     </ul>
 
     <div class="text-center mb-5">
-      <a href="#" class="btn btn-success btn-lg px-5"> Apply Now </a>
+      <a
+        href="{{ scholarship.apply_link }}"
+        class="btn btn-success btn-lg px-5"
+        target="_blank"
+      >
+        Apply Now/Get Official Link
+      </a>
     </div>
   </div>
 </section>
