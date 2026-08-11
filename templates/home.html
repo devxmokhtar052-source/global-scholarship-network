@@ -1,163 +1,103 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block title %} Home - Global Scholarship Network {%
+endblock %} {% block content %}
 
-{% block title %}
-Home - Global Scholarship Network
-{% endblock %}
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <h1 class="display-4 fw-bold">Discover Global Scholarships</h1>
 
-{% block content %}
+        <p class="lead mt-3">
+          Find Scholarships, Fellowships, Internships, Conferences and
+          International Opportunities from around the world.
+        </p>
 
-   <section class="py-5 bg-light">
+        <a href="href=/scholarship_details" class="btn btn-primary btn-lg mt-3">
+          Explore Scholarships
+        </a>
+      </div>
 
-    <div class="container">
-
-        <div class="row align-items-center">
-
-            <div class="col-lg-6">
-
-                <h1 class="display-4 fw-bold">
-                    Discover Global Scholarships
-                </h1>
-
-                <p class="lead mt-3">
-                    Find Scholarships, Fellowships, Internships, Conferences and International Opportunities from around the world.
-                </p>
-
-                <a href="href=/scholarship_details" class="btn btn-primary btn-lg mt-3">
-                    Explore Scholarships
-                </a>
-
-            </div>
-
-            <div class="col-lg-6 text-center">
-
-                <img src="https://placehold.co/600x400?text=Hero+Image"
-                     class="img-fluid rounded"
-                     alt="Hero Image">
-
-            </div>
-
-        </div>
-
+      <div class="col-lg-6 text-center">
+        <img
+          src="{{ url_for('static', filename='images/hero.png') }}"
+          class="img-fluid rounded"
+          alt="Hero Image"
+        />
+      </div>
     </div>
-
+  </div>
 </section>
 
 <!--featured scholarships-->
 <section class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">Latest Scholarships/Fellowship/Internship</h2>
 
-    <div class="container">
+    <div class="row g-4">
+      {% for scholarship in scholarships %}
 
-        <h2 class="text-center mb-5">
-            Featured Scholarships
-        </h2>
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+          <img
+            src="{{ url_for('static', filename='uploads/' + scholarship.image) if scholarship.image else 'https://placehold.co/400x250?text=Scholarship+Image' }}"
+            class="card-img-top object-fit-cover"
+            alt="{{ scholarship.title }}"
+            style="height: 250px;"
+          />
 
-        <div class="row">
+          <div class="card-body">
+            <h5 class="card-title">{{ scholarship.title }}</h5>
 
-            <div class="col-md-4">
+            <p><strong>Country:</strong> {{ scholarship.country }}</p>
 
-                <div class="card shadow-sm">
+            <p><strong>Degree:</strong> {{ scholarship.degree }}</p>
 
-                    <img src="https://placehold.co/400x250?text=Scholarship+1" class="card-img-top">
+            <p><strong>Deadline:</strong> {{ scholarship.deadline }}</p>
 
-                    <div class="card-body">
-
-                        <h5 class="card-title">
-                            Scholarship Title
-                        </h5>
-
-                        <p>
-                            Country: Canada
-                        </p>
-
-                        <p>
-                            Degree: Masters
-                        </p>
-
-                        <p>
-                            Deadline: 15 Dec 2026
-                        </p>
-
-                        <a href="scholarship_details" class="btn btn-primary">
-                            View Details
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-4">
-
-                <div class="card shadow-sm">
-
-                    <img src="https://placehold.co/400x250?text=Scholarship+2" class="card-img-top">
-
-                    <div class="card-body">
-
-                        <h5 class="card-title">
-                            Scholarship Title
-                        </h5>
-
-                        <p>
-                            Country: Germany
-                        </p>
-
-                        <p>
-                            Degree: PhD
-                        </p>
-
-                        <p>
-                            Deadline: 20 Jan 2027
-                        </p>
-
-                        <a href="scholarship_details" class="btn btn-primary">
-                            View Details
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-4">
-
-                <div class="card shadow-sm">
-
-                    <img src="https://placehold.co/400x250?text=Scholarship+3" class="card-img-top">
-
-                    <div class="card-body">
-
-                        <h5 class="card-title">
-                            Scholarship Title
-                        </h5>
-
-                        <p>
-                            Country: Japan
-                        </p>
-
-                        <p>
-                            Degree: Bachelor
-                        </p>
-
-                        <p>
-                            Deadline: 10 Feb 2027
-                        </p>
-
-                        <a href="/scholarships" class="btn btn-primary">
-                            View Details
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
+            <a
+              href="{{ url_for('scholarship_details', id=scholarship.id) }}"
+              class="btn btn-primary"
+            >
+              View Details
+            </a>
+          </div>
         </div>
+      </div>
 
+      {% endfor %}
     </div>
-
+  </div>
+  <nav class="mt-5">
+    <ul class="pagination justify-content-center">
+      {% if scholarships.has_prev %}
+      <li class="page-item">
+        <a
+          class="page-link"
+          href="{{ url_for('home', page=scholarships.prev_num) }}"
+        >
+          Previous
+        </a>
+      </li>
+      {% endif %} {% for page_num in scholarships.iter_pages() %} {% if page_num
+      %}
+      <li
+        class="page-item {% if page_num == scholarships.page %}active{% endif %}"
+      >
+        <a class="page-link" href="{{ url_for('home', page=page_num) }}">
+          {{ page_num }}
+        </a>
+      </li>
+      {% endif %} {% endfor %} {% if scholarships.has_next %}
+      <li class="page-item">
+        <a
+          class="page-link"
+          href="{{ url_for('home', page=scholarships.next_num) }}"
+        >
+          Next
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
 </section>
 {% endblock %}

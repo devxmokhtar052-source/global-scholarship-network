@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Scholarship{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h1 class="mb-4">Edit Scholarship</h1>
+
+    <div class="card shadow-sm">
+        <div class="card-body p-4">
+
+            <form method="POST" enctype="multipart/form-data">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Scholarship Title</label>
+                        <input type="text"
+                               name="title"
+                               class="form-control"
+                               value="{{ scholarship.title }}"
+                               required>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Country</label>
+                        <input type="text"
+                               name="country"
+                               class="form-control"
+                               value="{{ scholarship.country }}"
+                               required>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">University</label>
+                        <input type="text"
+                               name="university"
+                               class="form-control"
+                               value="{{ scholarship.university or '' }}">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Degree</label>
+                        <input type="text"
+                               name="degree"
+                               class="form-control"
+                               value="{{ scholarship.degree or '' }}">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Deadline</label>
+                        <input type="date"
+                               name="deadline"
+                               class="form-control"
+                               value="{{ scholarship.deadline or '' }}">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Official Link</label>
+                        <input type="url"
+                               name="apply_link"
+                               class="form-control"
+                               value="{{ scholarship.apply_link or '' }}">
+                    </div>
+
+                    <div class="col-12 mb-3">
+
+                        <label class="form-label">Current Scholarship Image</label>
+
+                        {% if scholarship.image %}
+                            <div class="mb-3">
+                                <img src="{{ url_for('static', filename='uploads/' + scholarship.image) }}"
+                                     class="img-thumbnail"
+                                     style="max-width: 250px;"
+                                     alt="{{ scholarship.title }}">
+                            </div>
+                        {% else %}
+                            <p class="text-muted">
+                                No image uploaded.
+                            </p>
+                        {% endif %}
+
+                        <label class="form-label">Replace Image</label>
+
+                        <input type="file"
+                               name="image"
+                               class="form-control"
+                               accept="image/*">
+
+                        <small class="text-muted">
+                            Leave empty to keep the current image.
+                        </small>
+
+                    </div>
+
+                    <div class="col-12 mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea name="description"
+                                  class="form-control"
+                                  rows="4">{{ scholarship.description or '' }}</textarea>
+                    </div>
+
+                    <div class="col-12 mb-3">
+                        <label class="form-label">Benefits</label>
+                        <textarea name="benefits"
+                                  class="form-control"
+                                  rows="4">{{ scholarship.benefits or '' }}</textarea>
+
+                        <small class="text-muted">
+                            Separate multiple benefits with commas.
+                        </small>
+                    </div>
+
+                    <div class="col-12 mb-3">
+                        <label class="form-label">Eligibility</label>
+                        <textarea name="eligibility"
+                                  class="form-control"
+                                  rows="4">{{ scholarship.eligibility or '' }}</textarea>
+
+                        <small class="text-muted">
+                            Separate multiple requirements with commas.
+                        </small>
+                    </div>
+
+                    <div class="col-12 mb-3">
+                        <label class="form-label">Required Documents</label>
+                        <textarea name="documents"
+                                  class="form-control"
+                                  rows="4">{{ scholarship.documents or '' }}</textarea>
+
+                        <small class="text-muted">
+                            Separate multiple documents with commas.
+                        </small>
+                    </div>
+
+                </div>
+
+                <div class="d-flex gap-2 mt-3">
+
+                    <button type="submit" class="btn btn-primary">
+                        Update Scholarship
+                    </button>
+
+                    <a href="{{ url_for('admin_dashboard') }}"
+                       class="btn btn-secondary">
+                        Cancel
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

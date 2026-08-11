@@ -11,7 +11,7 @@ Scholarships - Global Scholarship Network
     <div class="container">
 
         <h1 class="text-center mb-5">
-            All Scholarships
+            All Leatest Opportunities
         </h1>
 
         <div class="row justify-content-center mb-5">
@@ -30,6 +30,8 @@ Scholarships - Global Scholarship Network
             </button>
 
         </div>
+        
+
 
     </div>
 
@@ -42,8 +44,9 @@ Scholarships - Global Scholarship Network
 
     <div class="card shadow-sm h-100">
 
-        <img src="https://placehold.co/400x250?text=Scholarship+Image"
-             class="card-img-top"
+        <img src="{{ url_for('static', filename='uploads/' + scholarship.image) if scholarship.image else 'https://placehold.co/400x250?text=Scholarship+Image' }}"
+             class="card-img-top object-fit-cover"
+             style="height: 250px;"
              alt="Scholarship">
 
         <div class="card-body">

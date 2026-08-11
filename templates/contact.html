@@ -1,0 +1,306 @@
+{% extends "base.html" %} {% block title %}Contact Us - Global Scholarship
+Network{% endblock %} {% block content %}
+
+<!-- Contact Hero -->
+<section class="py-5 bg-light">
+  <div class="container py-4 text-center">
+    <span class="badge bg-primary mb-3"> Get In Touch </span>
+
+    <h1 class="display-4 fw-bold">
+      Contact <span class="text-primary">Global Scholarship Network</span>
+    </h1>
+
+    <p class="lead text-muted mt-3 mx-auto" style="max-width: 750px">
+      Have a question, suggestion, or want to discuss an opportunity? Feel free
+      to get in touch with us.
+    </p>
+  </div>
+</section>
+
+<!-- Guide / Introduction -->
+<section class="py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <div class="contact-guide-card shadow-sm">
+          <div class="text-center">
+            <!-- Profile Picture -->
+            <img
+              src="{{ url_for('static', filename='images/profile.jpg') }}"
+              class="rounded-circle object-fit-cover"
+              width="130"
+              height="130"
+              alt="Muhammad Mukhtar"
+            />
+
+            <h2 class="fw-bold mt-4">Muhammad Mukhtar</h2>
+            <h4>Education & Opportunities Blogger</h4>
+          </div>
+
+          <p class="text-muted text-center mt-4 mb-0">
+            I am passionate about helping students discover educational
+            opportunities and navigate the world of scholarships, fellowships,
+            internships and international programs. Through Global Scholarship
+            Network, I aim to make useful information easier to find and
+            understand while sharing practical guidance, scholarship research
+            and informative content through blogging. My goal is to help
+            students explore opportunities with greater clarity and confidence.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Information + Form -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row g-5">
+      <!-- Contact Information -->
+      <div class="col-lg-5">
+        <h2 class="fw-bold mb-4">Let's Connect</h2>
+
+        <p class="text-muted mb-4">
+          You can reach out through any of the platforms below. We would be
+          happy to hear from you.
+        </p>
+
+        <!-- Email -->
+        <div class="contact-info-item">
+          <div class="contact-info-icon">
+            <i class="bi bi-envelope-fill"></i>
+          </div>
+
+          <div>
+            <h6 class="fw-bold mb-1">Email</h6>
+            <a href="mailto:info@globalscholarshipnetwork.com">
+              info@globalscholarshipnetwork.com
+            </a>
+          </div>
+        </div>
+
+        <!-- WhatsApp -->
+        <div class="contact-info-item">
+          <div class="contact-info-icon whatsapp-icon">
+            <i class="bi bi-whatsapp"></i>
+          </div>
+
+          <div>
+            <h6 class="fw-bold mb-1">WhatsApp</h6>
+            <a
+              href="https://whatsapp.com/channel/0029VbDGBuc3LdQZy6jC2A0M"
+              target="_blank"
+            >
+              Join our WhatsApp Channel
+            </a>
+          </div>
+        </div>
+
+        <!-- Facebook -->
+        <div class="contact-info-item">
+          <div class="contact-info-icon facebook-icon">
+            <i class="bi bi-facebook"></i>
+          </div>
+
+          <div>
+            <h6 class="fw-bold mb-1">Facebook</h6>
+            <a
+              href="https://www.facebook.com/share/18J5UybLg8/"
+              target="_blank"
+            >
+              Follow us on Facebook
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="col-lg-7">
+        <div class="contact-form-card shadow-sm">
+          <h3 class="fw-bold mb-4">Send Us a Message</h3>
+
+          <form>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label"> Your Name </label>
+
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter your name"
+                />
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label"> Email Address </label>
+
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Enter your email"
+                />
+              </div>
+
+              <div class="col-12">
+                <label class="form-label"> Subject </label>
+
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="What would you like to discuss?"
+                />
+              </div>
+
+              <div class="col-12">
+                <label class="form-label"> Message </label>
+
+                <textarea
+                  class="form-control"
+                  rows="6"
+                  placeholder="Write your message here..."
+                ></textarea>
+              </div>
+
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-lg px-4">
+                  <i class="bi bi-send me-2"></i>
+                  Send Message
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Closing CTA -->
+<section class="py-5 bg-primary text-white">
+  <div class="container text-center py-3">
+    <h2 class="fw-bold">Have an Opportunity to Share?</h2>
+
+    <p class="lead mt-3 mb-0">
+      We are always interested in discovering useful opportunities that can
+      benefit students around the world.
+    </p>
+  </div>
+</section>
+
+<!-- Contact Page Styling -->
+<style>
+  .contact-guide-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 45px;
+    border: 1px solid #eeeeee;
+  }
+
+  .profile-placeholder {
+    width: 130px;
+    height: 130px;
+    margin: auto;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0d6efd, #6610f2);
+    color: #ffffff;
+    font-size: 55px;
+    overflow: hidden;
+    transition: all 0.35s ease;
+  }
+
+  .profile-placeholder:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(13, 110, 253, 0.3);
+  }
+
+  .contact-info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #ffffff;
+    padding: 18px;
+    border-radius: 14px;
+    margin-bottom: 15px;
+    border: 1px solid #eeeeee;
+    transition: all 0.3s ease;
+  }
+
+  .contact-info-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .contact-info-icon {
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e9f2ff;
+    color: #0d6efd;
+    font-size: 20px;
+  }
+
+  .whatsapp-icon {
+    background: #e8f7ef;
+    color: #198754;
+  }
+
+  .facebook-icon {
+    background: #e8f0ff;
+    color: #0d6efd;
+  }
+
+  .contact-info-item a {
+    color: #0d6efd;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .contact-info-item a:hover {
+    color: #6610f2;
+  }
+
+  .contact-form-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 40px;
+    border: 1px solid #eeeeee;
+  }
+
+  .contact-form-card .form-control {
+    border-radius: 10px;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
+  }
+
+  .contact-form-card .form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.12);
+  }
+
+  .contact-form-card .btn {
+    transition: all 0.3s ease;
+  }
+
+  .contact-form-card .btn:hover {
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 767px) {
+    .contact-guide-card {
+      padding: 30px 20px;
+    }
+
+    .contact-form-card {
+      padding: 30px 20px;
+    }
+  }
+</style>
+
+{% endblock %}

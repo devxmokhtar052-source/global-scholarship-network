@@ -8,8 +8,9 @@
     <div class="row mt-5 align-items-center">
       <div class="col-lg-6">
         <img
-          src="https://placehold.co/700x450?text=Scholarship+Image"
-          class="img-fluid rounded shadow"
+          src="{{ url_for('static', filename='uploads/' + scholarship.image) if scholarship.image else 'https://placehold.co/700x450?text=Scholarship+Image' }}"
+          class="img-fluid rounded shadow object-fit-cover"
+          style="height: 450px;"
           alt="Scholarship Image"
         />
       </div>
@@ -27,6 +28,14 @@
 
         <p><strong>Deadline:</strong> {{ scholarship.deadline }}</p>
       </div>
+    </div>
+
+    <hr class="my-5" />
+
+    <h3 class="mb-4">Description</h3>
+
+    <div class="mb-5">
+      <p style="white-space: pre-line">{{ scholarship.description }}</p>
     </div>
 
     <hr class="my-5" />
