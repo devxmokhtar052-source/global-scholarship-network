@@ -30,11 +30,7 @@ block content %}
 
           <div class="col-md-6 mb-3">
             <label class="form-label">Deadline</label>
-            <input
-              type="date"
-              name="deadline"
-              class="form-control"
-            />
+            <input type="date" name="deadline" class="form-control" />
           </div>
 
           <div class="col-md-6 mb-3">
@@ -105,6 +101,19 @@ block content %}
 
             <small class="text-muted">
               Separate multiple documents with commas.
+            </small>
+          </div>
+          <div class="col-12 mb-3">
+            <label class="form-label">How to Apply</label>
+            <textarea
+              name="how_to_apply"
+              class="form-control"
+              rows="5"
+              placeholder="Step 1: Visit the official website, Step 2: Complete the application form, Step 3: Upload required documents, Step 4: Submit your application"
+            ></textarea>
+
+            <small class="text-muted">
+              Separate application steps with commas.
             </small>
           </div>
         </div>

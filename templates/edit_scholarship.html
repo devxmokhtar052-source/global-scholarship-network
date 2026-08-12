@@ -1,160 +1,168 @@
-{% extends "base.html" %}
-
-{% block title %}Edit Scholarship{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% block title %}Edit Scholarship{% endblock %} {%
+block content %}
 
 <div class="container py-5">
+  <h1 class="mb-4">Edit Scholarship</h1>
 
-    <h1 class="mb-4">Edit Scholarship</h1>
+  <div class="card shadow-sm">
+    <div class="card-body p-4">
+      <form method="POST" enctype="multipart/form-data">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Scholarship Title</label>
+            <input
+              type="text"
+              name="title"
+              class="form-control"
+              value="{{ scholarship.title }}"
+              required
+            />
+          </div>
 
-    <div class="card shadow-sm">
-        <div class="card-body p-4">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Country</label>
+            <input
+              type="text"
+              name="country"
+              class="form-control"
+              value="{{ scholarship.country }}"
+              required
+            />
+          </div>
 
-            <form method="POST" enctype="multipart/form-data">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">University</label>
+            <input
+              type="text"
+              name="university"
+              class="form-control"
+              value="{{ scholarship.university or '' }}"
+            />
+          </div>
 
-                <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Degree</label>
+            <input
+              type="text"
+              name="degree"
+              class="form-control"
+              value="{{ scholarship.degree or '' }}"
+            />
+          </div>
 
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Scholarship Title</label>
-                        <input type="text"
-                               name="title"
-                               class="form-control"
-                               value="{{ scholarship.title }}"
-                               required>
-                    </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Deadline</label>
+            <input
+              type="date"
+              name="deadline"
+              class="form-control"
+              value="{{ scholarship.deadline or '' }}"
+            />
+          </div>
 
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Country</label>
-                        <input type="text"
-                               name="country"
-                               class="form-control"
-                               value="{{ scholarship.country }}"
-                               required>
-                    </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Official Link</label>
+            <input
+              type="url"
+              name="apply_link"
+              class="form-control"
+              value="{{ scholarship.apply_link or '' }}"
+            />
+          </div>
 
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">University</label>
-                        <input type="text"
-                               name="university"
-                               class="form-control"
-                               value="{{ scholarship.university or '' }}">
-                    </div>
+          <div class="col-12 mb-3">
+            <label class="form-label">Current Scholarship Image</label>
 
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Degree</label>
-                        <input type="text"
-                               name="degree"
-                               class="form-control"
-                               value="{{ scholarship.degree or '' }}">
-                    </div>
+            {% if scholarship.image %}
+            <div class="mb-3">
+              <img
+                src="{{ url_for('static', filename='uploads/' + scholarship.image) }}"
+                class="img-thumbnail"
+                style="max-width: 250px"
+                alt="{{ scholarship.title }}"
+              />
+            </div>
+            {% else %}
+            <p class="text-muted">No image uploaded.</p>
+            {% endif %}
 
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Deadline</label>
-                        <input type="date"
-                               name="deadline"
-                               class="form-control"
-                               value="{{ scholarship.deadline or '' }}">
-                    </div>
+            <label class="form-label">Replace Image</label>
 
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Official Link</label>
-                        <input type="url"
-                               name="apply_link"
-                               class="form-control"
-                               value="{{ scholarship.apply_link or '' }}">
-                    </div>
+            <input
+              type="file"
+              name="image"
+              class="form-control"
+              accept="image/*"
+            />
 
-                    <div class="col-12 mb-3">
+            <small class="text-muted">
+              Leave empty to keep the current image.
+            </small>
+          </div>
 
-                        <label class="form-label">Current Scholarship Image</label>
+          <div class="col-12 mb-3">
+            <label class="form-label">Description</label>
+            <textarea name="description" class="form-control" rows="4">
+{{ scholarship.description or '' }}</textarea
+            >
+          </div>
 
-                        {% if scholarship.image %}
-                            <div class="mb-3">
-                                <img src="{{ url_for('static', filename='uploads/' + scholarship.image) }}"
-                                     class="img-thumbnail"
-                                     style="max-width: 250px;"
-                                     alt="{{ scholarship.title }}">
-                            </div>
-                        {% else %}
-                            <p class="text-muted">
-                                No image uploaded.
-                            </p>
-                        {% endif %}
+          <div class="col-12 mb-3">
+            <label class="form-label">Benefits</label>
+            <textarea name="benefits" class="form-control" rows="4">
+{{ scholarship.benefits or '' }}</textarea
+            >
 
-                        <label class="form-label">Replace Image</label>
+            <small class="text-muted">
+              Separate multiple benefits with commas.
+            </small>
+          </div>
 
-                        <input type="file"
-                               name="image"
-                               class="form-control"
-                               accept="image/*">
+          <div class="col-12 mb-3">
+            <label class="form-label">Eligibility</label>
+            <textarea name="eligibility" class="form-control" rows="4">
+{{ scholarship.eligibility or '' }}</textarea
+            >
 
-                        <small class="text-muted">
-                            Leave empty to keep the current image.
-                        </small>
+            <small class="text-muted">
+              Separate multiple requirements with commas.
+            </small>
+          </div>
 
-                    </div>
+          <div class="col-12 mb-3">
+            <label class="form-label">Required Documents</label>
+            <textarea name="documents" class="form-control" rows="4">
+{{ scholarship.documents or '' }}</textarea
+            >
 
-                    <div class="col-12 mb-3">
-                        <label class="form-label">Description</label>
-                        <textarea name="description"
-                                  class="form-control"
-                                  rows="4">{{ scholarship.description or '' }}</textarea>
-                    </div>
+            <small class="text-muted">
+              Separate multiple documents with commas.
+            </small>
+          </div>
+          <div class="col-12 mb-3">
+            <label class="form-label">How to Apply</label>
+            <textarea name="how_to_apply" class="form-control" rows="5">
+{{ scholarship.how_to_apply or '' }}</textarea
+            >
 
-                    <div class="col-12 mb-3">
-                        <label class="form-label">Benefits</label>
-                        <textarea name="benefits"
-                                  class="form-control"
-                                  rows="4">{{ scholarship.benefits or '' }}</textarea>
-
-                        <small class="text-muted">
-                            Separate multiple benefits with commas.
-                        </small>
-                    </div>
-
-                    <div class="col-12 mb-3">
-                        <label class="form-label">Eligibility</label>
-                        <textarea name="eligibility"
-                                  class="form-control"
-                                  rows="4">{{ scholarship.eligibility or '' }}</textarea>
-
-                        <small class="text-muted">
-                            Separate multiple requirements with commas.
-                        </small>
-                    </div>
-
-                    <div class="col-12 mb-3">
-                        <label class="form-label">Required Documents</label>
-                        <textarea name="documents"
-                                  class="form-control"
-                                  rows="4">{{ scholarship.documents or '' }}</textarea>
-
-                        <small class="text-muted">
-                            Separate multiple documents with commas.
-                        </small>
-                    </div>
-
-                </div>
-
-                <div class="d-flex gap-2 mt-3">
-
-                    <button type="submit" class="btn btn-primary">
-                        Update Scholarship
-                    </button>
-
-                    <a href="{{ url_for('admin_dashboard') }}"
-                       class="btn btn-secondary">
-                        Cancel
-                    </a>
-
-                </div>
-
-            </form>
-
+            <small class="text-muted">
+              Separate application steps with commas.
+            </small>
+          </div>
         </div>
-    </div>
 
+        <div class="d-flex gap-2 mt-3">
+          <button type="submit" class="btn btn-primary">
+            Update Scholarship
+          </button>
+
+          <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">
+            Cancel
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
 
 {% endblock %}

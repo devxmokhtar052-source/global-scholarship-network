@@ -4,7 +4,7 @@ endblock %} {% block content %}
 <section class="py-5 bg-light">
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-lg-6">
+      <div class="col-lg-6 mb-4 mb-lg-0">
         <h1 class="display-4 fw-bold">Discover Global Scholarships</h1>
 
         <p class="lead mt-3">
@@ -12,7 +12,7 @@ endblock %} {% block content %}
           International Opportunities from around the world.
         </p>
 
-        <a href="href=/scholarship_details" class="btn btn-primary btn-lg mt-3">
+        <a href="/scholarships" class="btn btn-primary btn-lg mt-3">
           Explore Scholarships
         </a>
       </div>
@@ -31,13 +31,13 @@ endblock %} {% block content %}
 <!--featured scholarships-->
 <section class="py-5">
   <div class="container">
-    <h2 class="text-center mb-5">Latest Scholarships/Fellowship/Internship</h2>
+    <h2 class="text-center mb-5 fw-bold">Latest Scholarships/Fellowship/Internship</h2>
 
     <div class="row g-4">
       {% for scholarship in scholarships %}
 
       <div class="col-md-4">
-        <div class="card shadow-sm h-100">
+        <div class="card shadow-sm h-100 d-flex flex-column">
           <img
             src="{{ url_for('static', filename='uploads/' + scholarship.image) if scholarship.image else 'https://placehold.co/400x250?text=Scholarship+Image' }}"
             class="card-img-top object-fit-cover"
@@ -45,8 +45,8 @@ endblock %} {% block content %}
             style="height: 250px;"
           />
 
-          <div class="card-body">
-            <h5 class="card-title">{{ scholarship.title }}</h5>
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title fw-bold">{{ scholarship.title }}</h5>
 
             <p><strong>Country:</strong> {{ scholarship.country }}</p>
 
@@ -56,7 +56,7 @@ endblock %} {% block content %}
 
             <a
               href="{{ url_for('scholarship_details', id=scholarship.id) }}"
-              class="btn btn-primary"
+              class="btn btn-primary mt-auto align-self-start"
             >
               View Details
             </a>

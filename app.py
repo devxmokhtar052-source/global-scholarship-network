@@ -38,6 +38,7 @@ class Scholarship(db.Model):
     eligibility = db.Column(db.Text)
 
     documents = db.Column(db.Text)
+    how_to_apply = db.Column(db.Text)
 
     apply_link = db.Column(db.String(500))
     image = db.Column(db.String(300))
@@ -160,6 +161,7 @@ def add_scholarship():
             benefits=request.form["benefits"],
             eligibility=request.form["eligibility"],
             documents=request.form["documents"],
+            how_to_apply=request.form["how_to_apply"],
             apply_link=request.form["apply_link"],
             image=image_filename
         )
@@ -190,6 +192,7 @@ def edit_scholarship(id):
         scholarship.benefits = request.form["benefits"]
         scholarship.eligibility = request.form["eligibility"]
         scholarship.documents = request.form["documents"]
+        scholarship.how_to_apply = request.form["how_to_apply"]
         scholarship.apply_link = request.form["apply_link"]
 
         image = request.files.get("image")
