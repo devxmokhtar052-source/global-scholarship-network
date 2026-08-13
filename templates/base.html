@@ -455,7 +455,78 @@
         gap: 15px 22px;
     }
 }
+/* =========================
+   SIMPLE CATEGORIES
+========================= */
 
+.gsn-categories {
+    padding: 35px 0;
+    background: #fff;
+}
+
+.gsn-categories-title {
+    margin-bottom: 30px;
+}
+
+.gsn-categories-title h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.gsn-categories-title p {
+    color: #666;
+    margin: 0;
+}
+
+.gsn-category-box {
+    padding: 0 20px;
+}
+
+.gsn-category-box h4 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.gsn-category-box:nth-child(1) h4 {
+    color: #198754;
+}
+
+.gsn-category-box:nth-child(2) h4 {
+    color: #0d6efd;
+}
+
+.gsn-category-box:nth-child(3) h4 {
+    color: #6f42c1;
+}
+
+.gsn-category-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.gsn-category-links a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 8px 0;
+
+    color: #333;
+    text-decoration: none;
+
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+}
+
+.gsn-category-links a:hover {
+    color: #0d6efd;
+}
+
+.gsn-category-links i {
+    font-size: 13px;
+}
 </style>
 </head>
 
@@ -585,6 +656,175 @@
 {% block content %}
 
 {% endblock %}
+<!-- =========================
+     SCHOLARSHIP CATEGORIES
+========================= -->
+
+<section class="gsn-categories">
+
+    <div class="container">
+
+        <div class="gsn-categories-title">
+            <h2>Categories</h2>
+            <p>Explore scholarships and opportunities by category</p>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- BY REGION -->
+            <div class="col-lg-4 col-md-6">
+
+                <div class="gsn-category-box">
+
+                    <h4>By Region</h4>
+
+                    <div class="gsn-category-links">
+
+                        <a href="{{ url_for('scholarship_category', category_type='region', category_value='Europe') }}">
+                            <span>Europe</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                        <a href="{{ url_for('scholarship_category', category_type='region', category_value='Middle East') }}">
+                            <span>Middle East</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                        <a href="{{ url_for('scholarship_category', category_type='region', category_value='China') }}">
+                            <span>China</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                        <a href="{{ url_for('scholarship_category', category_type='region', category_value='Japan') }}">
+                            <span>Japan</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                        <a href="{{ url_for('scholarship_category', category_type='region', category_value='South Korea') }}">
+                            <span>South Korea</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                        <a href="{{ url_for('scholarship_category', category_type='region', category_value='Saudi Arabia') }}">
+                            <span>Saudi Arabia</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                        <a href="{{ url_for('scholarship_category', category_type='region', category_value='USA') }}">
+                            <span>USA</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                        <a href="{{ url_for('scholarship_category', category_type='region', category_value='Canada') }}">
+                            <span>Canada</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                        <a href="{{ url_for('scholarship_category', category_type='region', category_value='Australia') }}">
+                            <span>Australia</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                        <a href="{{ url_for('scholarship_category', category_type='region', category_value='Indonesia') }}">
+                            <span>Indonesia</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                        <a href="{{ url_for('scholarship_category', category_type='region', category_value='Malaysia') }}">
+                            <span>Malaysia</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- BY OPPORTUNITY -->
+            <div class="col-lg-4 col-md-6">
+
+                <div class="gsn-category-box">
+
+                    <h4>By Opportunity</h4>
+
+                    <div class="gsn-category-links">
+
+                        <a href="{{ url_for('scholarship_category', category_type='opportunity', category_value='Undergraduate') }}">
+                            <span>Undergraduate</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                        <a href='{{ url_for("scholarship_category", category_type="opportunity", category_value="Master's") }}'>
+    <span>Master's</span>
+    <i class="bi bi-chevron-right"></i>
+</a>
+
+                        <a href="{{ url_for('scholarship_category', category_type='opportunity', category_value='PhD') }}">
+                            <span>PhD</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                        <a href="{{ url_for('scholarship_category', category_type='opportunity', category_value='Postdoctoral') }}">
+                            <span>Postdoctoral</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                        <a href="{{ url_for('scholarship_category', category_type='opportunity', category_value='Diploma / Certificate') }}">
+                            <span>Diploma / Certificate</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                        <a href="{{ url_for('scholarship_category', category_type='opportunity', category_value='Fellowship') }}">
+                            <span>Fellowships</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                        <a href="{{ url_for('scholarship_category', category_type='opportunity', category_value='Internship') }}">
+                            <span>Internships</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                        <a href="{{ url_for('scholarship_category', category_type='opportunity', category_value='Exchange Program') }}">
+                            <span>Exchange Programs</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- BY LANGUAGE -->
+            <div class="col-lg-4 col-md-6">
+
+                <div class="gsn-category-box">
+
+                    <h4>By Language</h4>
+
+                    <div class="gsn-category-links">
+
+                        <a href="{{ url_for('scholarship_category', category_type='language', category_value='IELTS') }}">
+                            <span>IELTS Required</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                        <a href="{{ url_for('scholarship_category', category_type='language', category_value='No IELTS') }}">
+                            <span>No IELTS</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 <!-- Premium Footer -->
 <footer class="site-footer">

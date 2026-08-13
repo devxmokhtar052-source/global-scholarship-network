@@ -40,6 +40,12 @@ class Scholarship(db.Model):
     documents = db.Column(db.Text)
     how_to_apply = db.Column(db.Text)
 
+    documents = db.Column(db.Text)
+    how_to_apply = db.Column(db.Text)
+
+    opportunity_type = db.Column(db.Text)
+    language_requirement = db.Column(db.String(50))
+
     apply_link = db.Column(db.String(500))
     image = db.Column(db.String(300))
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
@@ -75,6 +81,60 @@ def scholarship_details(id):
 def scholarships():
     scholarships = Scholarship.query.all()
     return render_template("scholarships.html", scholarships=scholarships)
+
+@app.route("/scholarships/category/<category_type>/<path:category_value>")
+def scholarship_category(category_type, category_value):
+
+    if category_type == "region":
+        region_groups = {
+            "Europe": [
+                "Albania", "Austria", "Belgium", "Bulgaria", "Croatia",
+                "Cyprus", "Czech Republic", "Denmark", "Estonia",
+                "Finland", "France", "Germany", "Greece", "Hungary",
+                "Iceland", "Ireland", "Italy", "Latvia", "Lithuania",
+                "Luxembourg", "Malta", "Netherlands", "Norway", "Poland",
+                "Portugal", "Romania", "Serbia", "Slovakia", "Slovenia",
+                "Spain", "Sweden", "Switzerland", "Türkiye", "Ukraine",
+                "United Kingdom"
+            ],
+
+            "Middle East": [
+                "Bahrain", "Iran", "Iraq", "Jordan", "Kuwait",
+                "Lebanon", "Oman", "Qatar", "Saudi Arabia",
+                "United Arab Emirates"
+            ],
+
+            "USA": [
+                "United States"
+            ]
+        }
+
+        if category_value in region_groups:
+            scholarships = Scholarship.query.filter(
+                Scholarship.country.in_(region_groups[category_value])
+            ).all()
+        else:
+            scholarships = Scholarship.query.filter(
+                Scholarship.country.ilike(category_value)
+            ).all()
+
+    elif category_type == "opportunity":
+        scholarships = Scholarship.query.filter(
+            Scholarship.opportunity_type.ilike(f"%{category_value}%")
+        ).all()
+
+    elif category_type == "language":
+        scholarships = Scholarship.query.filter(
+            Scholarship.language_requirement.ilike(category_value)
+        ).all()
+
+    else:
+        return "Invalid category", 404
+
+    return render_template(
+        "scholarships.html",
+        scholarships=scholarships
+    )
 
 @app.route("/about")
 def about():
@@ -156,6 +216,8 @@ def add_scholarship():
             country=request.form["country"],
             university=request.form["university"],
             degree=request.form["degree"],
+            opportunity_type=", ".join(request.form.getlist("opportunity_type")),
+            language_requirement=request.form.get("language_requirement"),
             deadline=datetime.strptime(request.form["deadline"],"%Y-%m-%d").date(),
             description=request.form["description"],
             benefits=request.form["benefits"],
@@ -187,6 +249,8 @@ def edit_scholarship(id):
         scholarship.country = request.form["country"]
         scholarship.university = request.form["university"]
         scholarship.degree = request.form["degree"]
+        scholarship.opportunity_type = ", ".join(request.form.getlist("opportunity_type"))
+        scholarship.language_requirement = request.form.get("language_requirement")
         scholarship.deadline = datetime.strptime(request.form["deadline"],"%Y-%m-%d").date()
         scholarship.description = request.form["description"]
         scholarship.benefits = request.form["benefits"]

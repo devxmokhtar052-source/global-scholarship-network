@@ -19,15 +19,106 @@ block content %}
             />
           </div>
 
-          <div class="col-md-6 mb-3">
-            <label class="form-label">Country</label>
-            <input
-              type="text"
-              name="country"
-              class="form-control"
-              value="{{ scholarship.country }}"
-              required
-            />
+         <div class="col-md-6 mb-3">
+    <label class="form-label">Country</label>
+
+    <input
+        type="text"
+        name="country"
+        class="form-control"
+        list="country-list"
+        value="{{ scholarship.country }}"
+        placeholder="Search or select country"
+        required
+    />
+
+    <datalist id="country-list">
+        <option value="Afghanistan">
+        <option value="Albania">
+        <option value="Algeria">
+        <option value="Argentina">
+        <option value="Australia">
+        <option value="Austria">
+        <option value="Azerbaijan">
+        <option value="Bahrain">
+        <option value="Bangladesh">
+        <option value="Belgium">
+        <option value="Brazil">
+        <option value="Brunei">
+        <option value="Bulgaria">
+        <option value="Canada">
+        <option value="China">
+        <option value="Colombia">
+        <option value="Croatia">
+        <option value="Cyprus">
+        <option value="Czech Republic">
+        <option value="Denmark">
+        <option value="Egypt">
+        <option value="Estonia">
+        <option value="Finland">
+        <option value="France">
+        <option value="Georgia">
+        <option value="Germany">
+        <option value="Greece">
+        <option value="Hungary">
+        <option value="Iceland">
+        <option value="India">
+        <option value="Indonesia">
+        <option value="Iran">
+        <option value="Iraq">
+        <option value="Ireland">
+        <option value="Israel">
+        <option value="Italy">
+        <option value="Japan">
+        <option value="Jordan">
+        <option value="Kazakhstan">
+        <option value="Kenya">
+        <option value="Kuwait">
+        <option value="Latvia">
+        <option value="Lebanon">
+        <option value="Lithuania">
+        <option value="Luxembourg">
+        <option value="Malaysia">
+        <option value="Maldives">
+        <option value="Malta">
+        <option value="Mexico">
+        <option value="Monaco">
+        <option value="Morocco">
+        <option value="Nepal">
+        <option value="Netherlands">
+        <option value="New Zealand">
+        <option value="Nigeria">
+        <option value="Norway">
+        <option value="Oman">
+        <option value="Pakistan">
+        <option value="Philippines">
+        <option value="Poland">
+        <option value="Portugal">
+        <option value="Qatar">
+        <option value="Romania">
+        <option value="Russia">
+        <option value="Saudi Arabia">
+        <option value="Serbia">
+        <option value="Singapore">
+        <option value="Slovakia">
+        <option value="Slovenia">
+        <option value="South Africa">
+        <option value="South Korea">
+        <option value="Spain">
+        <option value="Sri Lanka">
+        <option value="Sweden">
+        <option value="Switzerland">
+        <option value="Thailand">
+        <option value="Tunisia">
+        <option value="Türkiye">
+        <option value="Ukraine">
+        <option value="United Arab Emirates">
+        <option value="United Kingdom">
+        <option value="United States">
+        <option value="Uzbekistan">
+        <option value="Vietnam">
+    </datalist>
+</div>
           </div>
 
           <div class="col-md-6 mb-3">
@@ -59,6 +150,150 @@ block content %}
               value="{{ scholarship.deadline or '' }}"
             />
           </div>
+          <div class="col-md-6 mb-3">
+    <label class="form-label">Opportunity Type</label>
+
+    <div class="border rounded p-3">
+
+        <div class="form-check">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                name="opportunity_type"
+                value="Undergraduate"
+                id="edit_undergraduate"
+                {% if scholarship.opportunity_type and 'Undergraduate' in scholarship.opportunity_type %}checked{% endif %}
+            >
+            <label class="form-check-label" for="edit_undergraduate">
+                Undergraduate
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                name="opportunity_type"
+                value="Master's"
+                id="edit_masters"
+                {% if scholarship.opportunity_type and "Master's" in scholarship.opportunity_type %}checked{% endif %}
+            >
+            <label class="form-check-label" for="edit_masters">
+                Master's
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                name="opportunity_type"
+                value="PhD"
+                id="edit_phd"
+                {% if scholarship.opportunity_type and 'PhD' in scholarship.opportunity_type %}checked{% endif %}
+            >
+            <label class="form-check-label" for="edit_phd">
+                PhD
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                name="opportunity_type"
+                value="Postdoctoral"
+                id="edit_postdoctoral"
+                {% if scholarship.opportunity_type and 'Postdoctoral' in scholarship.opportunity_type %}checked{% endif %}
+            >
+            <label class="form-check-label" for="edit_postdoctoral">
+                Postdoctoral
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                name="opportunity_type"
+                value="Diploma / Certificate"
+                id="edit_diploma"
+                {% if scholarship.opportunity_type and 'Diploma / Certificate' in scholarship.opportunity_type %}checked{% endif %}
+            >
+            <label class="form-check-label" for="edit_diploma">
+                Diploma / Certificate
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                name="opportunity_type"
+                value="Internship"
+                id="edit_internship"
+                {% if scholarship.opportunity_type and 'Internship' in scholarship.opportunity_type %}checked{% endif %}
+            >
+            <label class="form-check-label" for="edit_internship">
+                Internship
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                name="opportunity_type"
+                value="Fellowship"
+                id="edit_fellowship"
+                {% if scholarship.opportunity_type and 'Fellowship' in scholarship.opportunity_type %}checked{% endif %}
+            >
+            <label class="form-check-label" for="edit_fellowship">
+                Fellowship
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                name="opportunity_type"
+                value="Exchange Program"
+                id="edit_exchange"
+                {% if scholarship.opportunity_type and 'Exchange Program' in scholarship.opportunity_type %}checked{% endif %}
+            >
+            <label class="form-check-label" for="edit_exchange">
+                Exchange Program
+            </label>
+        </div>
+
+    </div>
+</div>
+
+<div class="col-md-6 mb-3">
+    <label class="form-label">Language Requirement</label>
+
+    <select
+        name="language_requirement"
+        class="form-select"
+    >
+        <option value="">Select Language Requirement</option>
+
+        <option
+            value="IELTS"
+            {% if scholarship.language_requirement == 'IELTS' %}selected{% endif %}
+        >
+            IELTS
+        </option>
+
+        <option
+            value="No IELTS"
+            {% if scholarship.language_requirement == 'No IELTS' %}selected{% endif %}
+        >
+            No IELTS
+        </option>
+    </select>
+</div>
 
           <div class="col-md-6 mb-3">
             <label class="form-label">Official Link</label>
