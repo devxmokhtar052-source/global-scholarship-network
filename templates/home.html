@@ -100,4 +100,544 @@ endblock %} {% block content %}
     </ul>
   </nav>
 </section>
+<!-- =========================
+     CATEGORY SECTIONS
+========================= -->
+
+<section class="py-5">
+    <div class="container">
+
+        <!-- Master's Scholarships -->
+        <div class="mb-5">
+            <h2 class="fw-bold mb-4">Master's Scholarships</h2>
+
+            <div class="row g-4">
+                {% for scholarship in masters_scholarships %}
+                    <div class="col-md-4">
+                        <div class="card shadow-sm h-100 d-flex flex-column">
+
+                            <img
+                                src="{{ url_for('static', filename='uploads/' + scholarship.image) if scholarship.image else 'https://placehold.co/400x250?text=Scholarship+Image' }}"
+                                class="card-img-top object-fit-cover"
+                                alt="{{ scholarship.title }}"
+                                style="height: 250px;"
+                            >
+
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold">
+                                    {{ scholarship.title }}
+                                </h5>
+
+                                <p><strong>Country:</strong> {{ scholarship.country }}</p>
+                                <p><strong>Degree:</strong> {{ scholarship.degree }}</p>
+                                <p><strong>Deadline:</strong> {{ scholarship.deadline }}</p>
+
+                                <a
+                                    href="{{ url_for('scholarship_details', id=scholarship.id) }}"
+                                    class="btn btn-primary mt-auto align-self-start"
+                                >
+                                    View Details
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="text-center mt-4">
+                <a
+                  href='{{ url_for("scholarship_category", category_type="opportunity", category_value="Master's") }}'
+                  class="btn btn-outline-primary">
+                  More
+                </a>
+            </div>
+        </div>
+
+
+        <!-- PhD Scholarships -->
+        <div class="mb-5">
+            <h2 class="fw-bold mb-4">PhD Scholarships</h2>
+
+            <div class="row g-4">
+                {% for scholarship in phd_scholarships %}
+                    <div class="col-md-4">
+                        <div class="card shadow-sm h-100 d-flex flex-column">
+                            <img
+                                src="{{ url_for('static', filename='uploads/' + scholarship.image) if scholarship.image else 'https://placehold.co/400x250?text=Scholarship+Image' }}"
+                                class="card-img-top object-fit-cover"
+                                alt="{{ scholarship.title }}"
+                                style="height: 250px;"
+                            >
+
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold">{{ scholarship.title }}</h5>
+                                <p><strong>Country:</strong> {{ scholarship.country }}</p>
+                                <p><strong>Degree:</strong> {{ scholarship.degree }}</p>
+                                <p><strong>Deadline:</strong> {{ scholarship.deadline }}</p>
+
+                                <a
+                                    href="{{ url_for('scholarship_details', id=scholarship.id) }}"
+                                    class="btn btn-primary mt-auto align-self-start"
+                                >
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="text-center mt-4">
+                <a
+                    href="{{ url_for('scholarship_category', category_type='opportunity', category_value='PhD') }}"
+                    class="btn btn-outline-primary"
+                >
+                    More
+                </a>
+            </div>
+        </div>
+
+
+        <!-- Undergraduate Scholarships -->
+        <div class="mb-5">
+            <h2 class="fw-bold mb-4">Undergraduate Scholarships</h2>
+
+            <div class="row g-4">
+                {% for scholarship in undergraduate_scholarships %}
+                    <div class="col-md-4">
+                        <div class="card shadow-sm h-100 d-flex flex-column">
+                            <img
+                                src="{{ url_for('static', filename='uploads/' + scholarship.image) if scholarship.image else 'https://placehold.co/400x250?text=Scholarship+Image' }}"
+                                class="card-img-top object-fit-cover"
+                                alt="{{ scholarship.title }}"
+                                style="height: 250px;"
+                            >
+
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold">{{ scholarship.title }}</h5>
+                                <p><strong>Country:</strong> {{ scholarship.country }}</p>
+                                <p><strong>Degree:</strong> {{ scholarship.degree }}</p>
+                                <p><strong>Deadline:</strong> {{ scholarship.deadline }}</p>
+
+                                <a
+                                    href="{{ url_for('scholarship_details', id=scholarship.id) }}"
+                                    class="btn btn-primary mt-auto align-self-start"
+                                >
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="text-center mt-4">
+                <a
+                    href="{{ url_for('scholarship_category', category_type='opportunity', category_value='Undergraduate') }}"
+                    class="btn btn-outline-primary"
+                >
+                    More
+                </a>
+            </div>
+        </div>
+
+
+        <!-- Postdoctoral Scholarships -->
+        <div class="mb-5">
+            <h2 class="fw-bold mb-4">Postdoctoral Scholarships</h2>
+
+            <div class="row g-4">
+                {% for scholarship in postdoctoral_scholarships %}
+                    <div class="col-md-4">
+                        <div class="card shadow-sm h-100 d-flex flex-column">
+                            <img
+                                src="{{ url_for('static', filename='uploads/' + scholarship.image) if scholarship.image else 'https://placehold.co/400x250?text=Scholarship+Image' }}"
+                                class="card-img-top object-fit-cover"
+                                alt="{{ scholarship.title }}"
+                                style="height: 250px;"
+                            >
+
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold">{{ scholarship.title }}</h5>
+                                <p><strong>Country:</strong> {{ scholarship.country }}</p>
+                                <p><strong>Degree:</strong> {{ scholarship.degree }}</p>
+                                <p><strong>Deadline:</strong> {{ scholarship.deadline }}</p>
+
+                                <a
+                                    href="{{ url_for('scholarship_details', id=scholarship.id) }}"
+                                    class="btn btn-primary mt-auto align-self-start"
+                                >
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="text-center mt-4">
+                <a
+                    href="{{ url_for('scholarship_category', category_type='opportunity', category_value='Postdoctoral') }}"
+                    class="btn btn-outline-primary"
+                >
+                    More
+                </a>
+            </div>
+        </div>
+
+
+        <!-- Internships -->
+        <div class="mb-5">
+            <h2 class="fw-bold mb-4">Internships</h2>
+
+            <div class="row g-4">
+                {% for scholarship in internships %}
+                    <div class="col-md-4">
+                        <div class="card shadow-sm h-100 d-flex flex-column">
+                            <img
+                                src="{{ url_for('static', filename='uploads/' + scholarship.image) if scholarship.image else 'https://placehold.co/400x250?text=Scholarship+Image' }}"
+                                class="card-img-top object-fit-cover"
+                                alt="{{ scholarship.title }}"
+                                style="height: 250px;"
+                            >
+
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold">{{ scholarship.title }}</h5>
+                                <p><strong>Country:</strong> {{ scholarship.country }}</p>
+                                <p><strong>Degree:</strong> {{ scholarship.degree }}</p>
+                                <p><strong>Deadline:</strong> {{ scholarship.deadline }}</p>
+
+                                <a
+                                    href="{{ url_for('scholarship_details', id=scholarship.id) }}"
+                                    class="btn btn-primary mt-auto align-self-start"
+                                >
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="text-center mt-4">
+                <a
+                    href="{{ url_for('scholarship_category', category_type='opportunity', category_value='Internship') }}"
+                    class="btn btn-outline-primary"
+                >
+                    More
+                </a>
+            </div>
+        </div>
+
+
+        <!-- Fellowships -->
+        <div class="mb-5">
+            <h2 class="fw-bold mb-4">Fellowships</h2>
+
+            <div class="row g-4">
+                {% for scholarship in fellowships %}
+                    <div class="col-md-4">
+                        <div class="card shadow-sm h-100 d-flex flex-column">
+                            <img
+                                src="{{ url_for('static', filename='uploads/' + scholarship.image) if scholarship.image else 'https://placehold.co/400x250?text=Scholarship+Image' }}"
+                                class="card-img-top object-fit-cover"
+                                alt="{{ scholarship.title }}"
+                                style="height: 250px;"
+                            >
+
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold">{{ scholarship.title }}</h5>
+                                <p><strong>Country:</strong> {{ scholarship.country }}</p>
+                                <p><strong>Degree:</strong> {{ scholarship.degree }}</p>
+                                <p><strong>Deadline:</strong> {{ scholarship.deadline }}</p>
+
+                                <a
+                                    href="{{ url_for('scholarship_details', id=scholarship.id) }}"
+                                    class="btn btn-primary mt-auto align-self-start"
+                                >
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="text-center mt-4">
+                <a
+                    href="{{ url_for('scholarship_category', category_type='opportunity', category_value='Fellowship') }}"
+                    class="btn btn-outline-primary"
+                >
+                    More
+                </a>
+            </div>
+        </div>
+
+
+        <!-- Exchange Programs -->
+        <div class="mb-5">
+            <h2 class="fw-bold mb-4">Exchange Programs</h2>
+
+            <div class="row g-4">
+                {% for scholarship in exchange_programs %}
+                    <div class="col-md-4">
+                        <div class="card shadow-sm h-100 d-flex flex-column">
+                            <img
+                                src="{{ url_for('static', filename='uploads/' + scholarship.image) if scholarship.image else 'https://placehold.co/400x250?text=Scholarship+Image' }}"
+                                class="card-img-top object-fit-cover"
+                                alt="{{ scholarship.title }}"
+                                style="height: 250px;"
+                            >
+
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold">{{ scholarship.title }}</h5>
+                                <p><strong>Country:</strong> {{ scholarship.country }}</p>
+                                <p><strong>Degree:</strong> {{ scholarship.degree }}</p>
+                                <p><strong>Deadline:</strong> {{ scholarship.deadline }}</p>
+
+                                <a
+                                    href="{{ url_for('scholarship_details', id=scholarship.id) }}"
+                                    class="btn btn-primary mt-auto align-self-start"
+                                >
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="text-center mt-4">
+                <a
+                    href="{{ url_for('scholarship_category', category_type='opportunity', category_value='Exchange Program') }}"
+                    class="btn btn-outline-primary"
+                >
+                    More
+                </a>
+            </div>
+        </div>
+
+
+        <!-- USA Scholarships -->
+        <div class="mb-5">
+            <h2 class="fw-bold mb-4">USA Scholarships</h2>
+
+            <div class="row g-4">
+                {% for scholarship in usa_scholarships %}
+                    <div class="col-md-4">
+                        <div class="card shadow-sm h-100 d-flex flex-column">
+                            <img
+                                src="{{ url_for('static', filename='uploads/' + scholarship.image) if scholarship.image else 'https://placehold.co/400x250?text=Scholarship+Image' }}"
+                                class="card-img-top object-fit-cover"
+                                alt="{{ scholarship.title }}"
+                                style="height: 250px;"
+                            >
+
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold">{{ scholarship.title }}</h5>
+                                <p><strong>Country:</strong> {{ scholarship.country }}</p>
+                                <p><strong>Degree:</strong> {{ scholarship.degree }}</p>
+                                <p><strong>Deadline:</strong> {{ scholarship.deadline }}</p>
+
+                                <a
+                                    href="{{ url_for('scholarship_details', id=scholarship.id) }}"
+                                    class="btn btn-primary mt-auto align-self-start"
+                                >
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="text-center mt-4">
+                <a
+                    href="{{ url_for('scholarship_category', category_type='region', category_value='USA') }}"
+                    class="btn btn-outline-primary"
+                >
+                    More
+                </a>
+            </div>
+        </div>
+
+
+        <!-- China Scholarships -->
+        <div class="mb-5">
+            <h2 class="fw-bold mb-4">China Scholarships</h2>
+
+            <div class="row g-4">
+                {% for scholarship in china_scholarships %}
+                    <div class="col-md-4">
+                        <div class="card shadow-sm h-100 d-flex flex-column">
+                            <img
+                                src="{{ url_for('static', filename='uploads/' + scholarship.image) if scholarship.image else 'https://placehold.co/400x250?text=Scholarship+Image' }}"
+                                class="card-img-top object-fit-cover"
+                                alt="{{ scholarship.title }}"
+                                style="height: 250px;"
+                            >
+
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold">{{ scholarship.title }}</h5>
+                                <p><strong>Country:</strong> {{ scholarship.country }}</p>
+                                <p><strong>Degree:</strong> {{ scholarship.degree }}</p>
+                                <p><strong>Deadline:</strong> {{ scholarship.deadline }}</p>
+
+                                <a
+                                    href="{{ url_for('scholarship_details', id=scholarship.id) }}"
+                                    class="btn btn-primary mt-auto align-self-start"
+                                >
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="text-center mt-4">
+                <a
+                    href="{{ url_for('scholarship_category', category_type='region', category_value='China') }}"
+                    class="btn btn-outline-primary"
+                >
+                    More
+                </a>
+            </div>
+        </div>
+
+
+        <!-- Japan Scholarships -->
+        <div class="mb-5">
+            <h2 class="fw-bold mb-4">Japan Scholarships</h2>
+
+            <div class="row g-4">
+                {% for scholarship in japan_scholarships %}
+                    <div class="col-md-4">
+                        <div class="card shadow-sm h-100 d-flex flex-column">
+                            <img
+                                src="{{ url_for('static', filename='uploads/' + scholarship.image) if scholarship.image else 'https://placehold.co/400x250?text=Scholarship+Image' }}"
+                                class="card-img-top object-fit-cover"
+                                alt="{{ scholarship.title }}"
+                                style="height: 250px;"
+                            >
+
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold">{{ scholarship.title }}</h5>
+                                <p><strong>Country:</strong> {{ scholarship.country }}</p>
+                                <p><strong>Degree:</strong> {{ scholarship.degree }}</p>
+                                <p><strong>Deadline:</strong> {{ scholarship.deadline }}</p>
+
+                                <a
+                                    href="{{ url_for('scholarship_details', id=scholarship.id) }}"
+                                    class="btn btn-primary mt-auto align-self-start"
+                                >
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="text-center mt-4">
+                <a
+                    href="{{ url_for('scholarship_category', category_type='region', category_value='Japan') }}"
+                    class="btn btn-outline-primary"
+                >
+                    More
+                </a>
+            </div>
+        </div>
+
+
+        <!-- Middle East Scholarships -->
+        <div class="mb-5">
+            <h2 class="fw-bold mb-4">Middle East Scholarships</h2>
+
+            <div class="row g-4">
+                {% for scholarship in middle_east_scholarships %}
+                    <div class="col-md-4">
+                        <div class="card shadow-sm h-100 d-flex flex-column">
+                            <img
+                                src="{{ url_for('static', filename='uploads/' + scholarship.image) if scholarship.image else 'https://placehold.co/400x250?text=Scholarship+Image' }}"
+                                class="card-img-top object-fit-cover"
+                                alt="{{ scholarship.title }}"
+                                style="height: 250px;"
+                            >
+
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold">{{ scholarship.title }}</h5>
+                                <p><strong>Country:</strong> {{ scholarship.country }}</p>
+                                <p><strong>Degree:</strong> {{ scholarship.degree }}</p>
+                                <p><strong>Deadline:</strong> {{ scholarship.deadline }}</p>
+
+                                <a
+                                    href="{{ url_for('scholarship_details', id=scholarship.id) }}"
+                                    class="btn btn-primary mt-auto align-self-start"
+                                >
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="text-center mt-4">
+                <a
+                    href="{{ url_for('scholarship_category', category_type='region', category_value='Middle East') }}"
+                    class="btn btn-outline-primary"
+                >
+                    More
+                </a>
+            </div>
+        </div>
+
+
+        <!-- Europe Scholarships -->
+        <div class="mb-5">
+            <h2 class="fw-bold mb-4">Europe Scholarships</h2>
+
+            <div class="row g-4">
+                {% for scholarship in europe_scholarships %}
+                    <div class="col-md-4">
+                        <div class="card shadow-sm h-100 d-flex flex-column">
+                            <img
+                                src="{{ url_for('static', filename='uploads/' + scholarship.image) if scholarship.image else 'https://placehold.co/400x250?text=Scholarship+Image' }}"
+                                class="card-img-top object-fit-cover"
+                                alt="{{ scholarship.title }}"
+                                style="height: 250px;"
+                            >
+
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold">{{ scholarship.title }}</h5>
+                                <p><strong>Country:</strong> {{ scholarship.country }}</p>
+                                <p><strong>Degree:</strong> {{ scholarship.degree }}</p>
+                                <p><strong>Deadline:</strong> {{ scholarship.deadline }}</p>
+
+                                <a
+                                    href="{{ url_for('scholarship_details', id=scholarship.id) }}"
+                                    class="btn btn-primary mt-auto align-self-start"
+                                >
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="text-center mt-4">
+                <a
+                    href="{{ url_for('scholarship_category', category_type='region', category_value='Europe') }}"
+                    class="btn btn-outline-primary"
+                >
+                    More
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
 {% endblock %}

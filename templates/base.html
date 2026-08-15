@@ -80,7 +80,55 @@
 .nav-hover:hover::after {
     width: 70%;
 }
+/* =========================
+   SCHOLARSHIP DROPDOWN
+========================= */
 
+.scholarship-dropdown {
+    position: relative;
+}
+
+.scholarship-dropdown .dropdown-menu {
+    min-width: 190px;
+    margin-top: 0;
+    padding: 8px 0;
+}
+
+.scholarship-dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.scholarship-dropdown .dropdown-item {
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+.scholarship-dropdown .dropdown-item:hover {
+    background: #f5f5f5;
+    color: #0d6efd;
+}
+
+/* =========================
+   NAVBAR ALIGNMENT FIX
+========================= */
+
+.navbar-nav {
+    flex-wrap: nowrap;
+}
+
+.navbar-nav .nav-item {
+    flex-shrink: 0;
+}
+
+.navbar-nav .nav-link {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.navbar-nav .nav-link i {
+    flex-shrink: 0;
+}
 
 /* =========================
    JOIN US
@@ -462,16 +510,19 @@
 .gsn-categories {
     padding: 35px 0;
     background: #fff;
+
 }
 
 .gsn-categories-title {
     margin-bottom: 30px;
+    font-weight: bold;
 }
 
 .gsn-categories-title h2 {
     font-size: 28px;
     font-weight: 600;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
 .gsn-categories-title p {
@@ -535,11 +586,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 shadow-sm">
     <div class="container">
 
-        <!-- Logo / Brand -->
-        <a class="navbar-brand fw-bold d-flex align-items-center gap-2 brand-link" href="/">
-            
-            <span>Dream Big. Study Global</span>
-        </a>
+        
 
         <!-- Mobile Toggle -->
         <button class="navbar-toggler"
@@ -566,12 +613,132 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link nav-hover" href="/scholarships">
-                        <i class="bi bi-mortarboard me-1"></i>
-                        Scholarships
-                    </a>
-                </li>
+                <li class="nav-item dropdown scholarship-dropdown">
+
+    <a class="nav-link nav-hover dropdown-toggle"
+       href="/scholarships"
+       role="button"
+       data-bs-toggle="dropdown"
+       aria-expanded="false">
+
+        <i class="bi bi-mortarboard me-1"></i>
+        Scholarships
+
+    </a>
+
+    <ul class="dropdown-menu">
+
+        <li>
+            <a class="dropdown-item"
+               href="{{ url_for('scholarship_category', category_type='region', category_value='Europe') }}">
+                Europe
+            </a>
+        </li>
+
+        <li>
+            <a class="dropdown-item"
+               href="{{ url_for('scholarship_category', category_type='region', category_value='Middle East') }}">
+                Middle East
+            </a>
+        </li>
+
+        <li>
+            <a class="dropdown-item"
+               href="{{ url_for('scholarship_category', category_type='region', category_value='China') }}">
+                China
+            </a>
+        </li>
+
+        <li>
+            <a class="dropdown-item"
+               href="{{ url_for('scholarship_category', category_type='region', category_value='Japan') }}">
+                Japan
+            </a>
+        </li>
+
+        <li>
+            <a class="dropdown-item"
+               href="{{ url_for('scholarship_category', category_type='region', category_value='South Korea') }}">
+                South Korea
+            </a>
+        </li>
+
+        <li>
+            <a class="dropdown-item"
+               href="{{ url_for('scholarship_category', category_type='region', category_value='Saudi Arabia') }}">
+                Saudi Arabia
+            </a>
+        </li>
+
+        <li>
+            <a class="dropdown-item"
+               href="{{ url_for('scholarship_category', category_type='region', category_value='Pakistan') }}">
+                Pakistan
+            </a>
+        </li>
+
+        <li>
+            <a class="dropdown-item"
+               href="{{ url_for('scholarship_category', category_type='region', category_value='USA') }}">
+                USA
+            </a>
+        </li>
+
+        <li>
+            <a class="dropdown-item"
+               href="{{ url_for('scholarship_category', category_type='region', category_value='Canada') }}">
+                Canada
+            </a>
+        </li>
+
+        <li>
+            <a class="dropdown-item"
+               href="{{ url_for('scholarship_category', category_type='region', category_value='Australia') }}">
+                Australia
+            </a>
+        </li>
+
+        <li>
+            <a class="dropdown-item"
+               href="{{ url_for('scholarship_category', category_type='region', category_value='Indonesia') }}">
+                Indonesia
+            </a>
+        </li>
+
+        <li>
+            <a class="dropdown-item"
+               href="{{ url_for('scholarship_category', category_type='region', category_value='Malaysia') }}">
+                Malaysia
+            </a>
+        </li>
+
+    </ul>
+
+</li>
+
+<li class="nav-item">
+    <a class="nav-link nav-hover"
+       href="{{ url_for('scholarship_category', category_type='opportunity', category_value='Internship') }}">
+        <i class="bi bi-briefcase me-1"></i>
+        Internships
+    </a>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link nav-hover"
+       href="{{ url_for('scholarship_category', category_type='opportunity', category_value='Fellowship') }}">
+        <i class="bi bi-award me-1"></i>
+        Fellowships
+    </a>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link nav-hover"
+       href="{{ url_for('scholarship_category', category_type='opportunity', category_value='Exchange Program') }}">
+        <i class="bi bi-globe2 me-1"></i>
+        Exchange Programs
+    </a>
+</li>
 
                 <li class="nav-item">
                     <a class="nav-link nav-hover" href="/about">
@@ -707,6 +874,11 @@
 
                         <a href="{{ url_for('scholarship_category', category_type='region', category_value='Saudi Arabia') }}">
                             <span>Saudi Arabia</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                        <a href="{{ url_for('scholarship_category', category_type='region', category_value='Pakistan') }}">
+                            <span>Scholarships in Pakistan</span>
                             <i class="bi bi-chevron-right"></i>
                         </a>
 

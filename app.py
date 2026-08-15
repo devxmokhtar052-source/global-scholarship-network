@@ -61,11 +61,150 @@ class Admin(db.Model):
 def home():
     page = request.args.get("page", 1, type=int)
 
+    # Existing latest opportunities section - DO NOT CHANGE
     scholarships = Scholarship.query.order_by(
-    Scholarship.updated_at.desc()
+        Scholarship.updated_at.desc()
     ).paginate(page=page, per_page=6)
 
-    return render_template("home.html", scholarships=scholarships)
+    # Latest 3 by opportunity
+    masters_scholarships = Scholarship.query.filter(
+        Scholarship.opportunity_type.ilike("%Master's%")
+    ).order_by(
+        Scholarship.updated_at.desc()
+    ).limit(3).all()
+
+    phd_scholarships = Scholarship.query.filter(
+        Scholarship.opportunity_type.ilike("%PhD%")
+    ).order_by(
+        Scholarship.updated_at.desc()
+    ).limit(3).all()
+
+    undergraduate_scholarships = Scholarship.query.filter(
+        Scholarship.opportunity_type.ilike("%Undergraduate%")
+    ).order_by(
+        Scholarship.updated_at.desc()
+    ).limit(3).all()
+
+    postdoctoral_scholarships = Scholarship.query.filter(
+        Scholarship.opportunity_type.ilike("%Postdoctoral%")
+    ).order_by(
+        Scholarship.updated_at.desc()
+    ).limit(3).all()
+
+    internships = Scholarship.query.filter(
+        Scholarship.opportunity_type.ilike("%Internship%")
+    ).order_by(
+        Scholarship.updated_at.desc()
+    ).limit(3).all()
+
+    fellowships = Scholarship.query.filter(
+        Scholarship.opportunity_type.ilike("%Fellowship%")
+    ).order_by(
+        Scholarship.updated_at.desc()
+    ).limit(3).all()
+
+    exchange_programs = Scholarship.query.filter(
+        Scholarship.opportunity_type.ilike("%Exchange Program%")
+    ).order_by(
+        Scholarship.updated_at.desc()
+    ).limit(3).all()
+
+    # Latest 3 by region
+    usa_scholarships = Scholarship.query.filter(
+        Scholarship.country.in_(["United States"])
+    ).order_by(
+        Scholarship.updated_at.desc()
+    ).limit(3).all()
+
+    china_scholarships = Scholarship.query.filter(
+        Scholarship.country.ilike("China")
+    ).order_by(
+        Scholarship.updated_at.desc()
+    ).limit(3).all()
+
+    japan_scholarships = Scholarship.query.filter(
+        Scholarship.country.ilike("Japan")
+    ).order_by(
+        Scholarship.updated_at.desc()
+    ).limit(3).all()
+
+    middle_east_scholarships = Scholarship.query.filter(
+        Scholarship.country.in_([
+            "Bahrain",
+            "Iran",
+            "Iraq",
+            "Jordan",
+            "Kuwait",
+            "Lebanon",
+            "Oman",
+            "Qatar",
+            "Saudi Arabia",
+            "United Arab Emirates"
+        ])
+    ).order_by(
+        Scholarship.updated_at.desc()
+    ).limit(3).all()
+
+    europe_scholarships = Scholarship.query.filter(
+        Scholarship.country.in_([
+            "Albania",
+            "Austria",
+            "Belgium",
+            "Bulgaria",
+            "Croatia",
+            "Cyprus",
+            "Czech Republic",
+            "Denmark",
+            "Estonia",
+            "Finland",
+            "France",
+            "Germany",
+            "Greece",
+            "Hungary",
+            "Iceland",
+            "Ireland",
+            "Italy",
+            "Latvia",
+            "Lithuania",
+            "Luxembourg",
+            "Malta",
+            "Netherlands",
+            "Norway",
+            "Poland",
+            "Portugal",
+            "Romania",
+            "Serbia",
+            "Slovakia",
+            "Slovenia",
+            "Spain",
+            "Sweden",
+            "Switzerland",
+            "Türkiye",
+            "Ukraine",
+            "United Kingdom"
+        ])
+    ).order_by(
+        Scholarship.updated_at.desc()
+    ).limit(3).all()
+
+    return render_template(
+        "home.html",
+        scholarships=scholarships,
+
+        masters_scholarships=masters_scholarships,
+        phd_scholarships=phd_scholarships,
+        undergraduate_scholarships=undergraduate_scholarships,
+        postdoctoral_scholarships=postdoctoral_scholarships,
+        internships=internships,
+        fellowships=fellowships,
+        exchange_programs=exchange_programs,
+
+        usa_scholarships=usa_scholarships,
+        china_scholarships=china_scholarships,
+        japan_scholarships=japan_scholarships,
+        middle_east_scholarships=middle_east_scholarships,
+        europe_scholarships=europe_scholarships
+    )
 
 @app.route("/scholarship_details/<int:id>")
 def scholarship_details(id):
@@ -80,11 +219,57 @@ def scholarship_details(id):
 @app.route("/scholarships")
 def scholarships():
     scholarships = Scholarship.query.all()
-    return render_template("scholarships.html", scholarships=scholarships)
+    return render_template(
+        "scholarships.html",
+        scholarships=scholarships,
+        category_heading="Latest Opportunities"
+    )
 
 @app.route("/scholarships/category/<category_type>/<path:category_value>")
 def scholarship_category(category_type, category_value):
+    category_heading = category_value
+    if category_type == "region":
+        category_heading = f"Scholarships in {category_value}"
 
+    elif category_type == "opportunity":
+
+        if category_value == "Internship":
+            category_heading = "Internships"
+
+        elif category_value == "Fellowship":
+            category_heading = "Fellowships"
+
+        elif category_value == "Exchange Program":
+            category_heading = "Exchange Programs"
+
+        elif category_value == "Master's":
+            category_heading = "Master's Scholarships"
+
+        elif category_value == "PhD":
+            category_heading = "PhD Scholarships"
+
+        elif category_value == "Undergraduate":
+            category_heading = "Undergraduate Scholarships"
+
+        elif category_value == "Postdoctoral":
+            category_heading = "Postdoctoral Scholarships"
+
+        elif category_value == "Diploma / Certificate":
+            category_heading = "Diploma / Certificate Scholarships"
+
+        else:
+            category_heading = f"{category_value} Opportunities"
+
+    elif category_type == "language":
+
+        if category_value == "IELTS":
+            category_heading = "IELTS Scholarships"
+
+        elif category_value == "No IELTS":
+            category_heading = "No IELTS Scholarships"
+
+        else:
+            category_heading = f"{category_value} Scholarships"
     if category_type == "region":
         region_groups = {
             "Europe": [
@@ -132,9 +317,10 @@ def scholarship_category(category_type, category_value):
         return "Invalid category", 404
 
     return render_template(
-        "scholarships.html",
-        scholarships=scholarships
-    )
+    "scholarships.html",
+    scholarships=scholarships,
+    category_heading=category_heading
+)
 
 @app.route("/about")
 def about():
