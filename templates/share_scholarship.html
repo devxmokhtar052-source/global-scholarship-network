@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}Share Scholarship{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="card shadow-sm">
+        <div class="card-body p-4">
+
+            <h2 class="mb-4">Share Scholarship</h2>
+
+            <!-- Poster -->
+            <div class="text-center mb-4">
+                {% if scholarship.image %}
+                    <img
+                        src="{{ url_for('static', filename='uploads/' + scholarship.image) }}"
+                        class="img-fluid rounded shadow"
+                        style="max-width: 600px;"
+                        alt="Scholarship Poster"
+                    >
+                {% else %}
+                    <div class="alert alert-warning">
+                        No poster uploaded for this scholarship.
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Generated Post -->
+            <div class="mb-3">
+                <label class="form-label fw-bold">WhatsApp / Social Media Post</label>
+
+                <textarea
+                    id="shareText"
+                    class="form-control"
+                    rows="8"
+                    readonly
+                >🎓 {{ scholarship.title }}
+
+💰 Benefits:
+{{ scholarship.benefits }}
+
+🔗 Apply Now:
+{{ url_for('scholarship_details', id=scholarship.id, _external=True) }}</textarea>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex gap-2 flex-wrap">
+
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    onclick="copyPost()"
+                >
+                    📋 Copy Post
+                </button>
+
+                {% if scholarship.image %}
+                <a
+                    href="{{ url_for('static', filename='uploads/' + scholarship.image) }}"
+                    download
+                    class="btn btn-success"
+                >
+                    🖼️ Download Poster
+                </a>
+                {% endif %}
+
+                <a
+                    href="{{ url_for('admin_dashboard') }}"
+                    class="btn btn-secondary"
+                >
+                    Back to Dashboard
+                </a>
+
+            </div>
+
+            <div
+                id="copyMessage"
+                class="alert alert-success mt-3 d-none"
+            >
+                Post copied successfully!
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+function copyPost() {
+    const text = document.getElementById("shareText");
+
+    navigator.clipboard.writeText(text.value).then(function () {
+
+        const message = document.getElementById("copyMessage");
+
+        message.classList.remove("d-none");
+
+        setTimeout(function () {
+            message.classList.add("d-none");
+        }, 2000);
+
+    }).catch(function () {
+
+        text.select();
+        document.execCommand("copy");
+
+        const message = document.getElementById("copyMessage");
+
+        message.classList.remove("d-none");
+
+        setTimeout(function () {
+            message.classList.add("d-none");
+        }, 2000);
+
+    });
+}
+</script>
+
+{% endblock %}

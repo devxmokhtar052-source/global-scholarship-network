@@ -1,6 +1,31 @@
 {% extends "base.html" %} {% block title %} Home - Global Scholarship Network {%
 endblock %} {% block content %}
 
+<style>
+    .category-ribbon {
+        display: inline-block;
+        position: relative;
+        background: #f28c28;
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 700;
+        padding: 10px 28px 10px 18px;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+    }
+
+    .category-ribbon::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 0;
+        height: 0;
+        border-top: 10px solid #c96f18;
+        border-left: 10px solid transparent;
+    }
+</style>
+
 <section class="py-5 bg-light">
   <div class="container">
     <div class="row align-items-center">
@@ -31,7 +56,7 @@ endblock %} {% block content %}
 <!--featured scholarships-->
 <section class="py-5">
   <div class="container">
-    <h2 class="text-center mb-5 fw-bold">Latest Scholarships/Fellowship/Internship</h2>
+    <h2 class="text-center mb-5 fw-bold">Latest Opportunities</h2>
 
     <div class="row g-4">
       {% for scholarship in scholarships %}
@@ -109,7 +134,7 @@ endblock %} {% block content %}
 
         <!-- Master's Scholarships -->
         <div class="mb-5">
-            <h2 class="fw-bold mb-4">Master's Scholarships</h2>
+            <h2 class="category-ribbon">Master's Scholarships</h2>
 
             <div class="row g-4">
                 {% for scholarship in masters_scholarships %}
@@ -157,7 +182,7 @@ endblock %} {% block content %}
 
         <!-- PhD Scholarships -->
         <div class="mb-5">
-            <h2 class="fw-bold mb-4">PhD Scholarships</h2>
+            <h2 class="category-ribbon">PhD Scholarships</h2>
 
             <div class="row g-4">
                 {% for scholarship in phd_scholarships %}
@@ -201,7 +226,7 @@ endblock %} {% block content %}
 
         <!-- Undergraduate Scholarships -->
         <div class="mb-5">
-            <h2 class="fw-bold mb-4">Undergraduate Scholarships</h2>
+            <h2 class="category-ribbon">Undergraduate Scholarships</h2>
 
             <div class="row g-4">
                 {% for scholarship in undergraduate_scholarships %}
@@ -245,7 +270,7 @@ endblock %} {% block content %}
 
         <!-- Postdoctoral Scholarships -->
         <div class="mb-5">
-            <h2 class="fw-bold mb-4">Postdoctoral Scholarships</h2>
+            <h2 class="category-ribbon">Postdoctoral Scholarships</h2>
 
             <div class="row g-4">
                 {% for scholarship in postdoctoral_scholarships %}
@@ -289,7 +314,7 @@ endblock %} {% block content %}
 
         <!-- Internships -->
         <div class="mb-5">
-            <h2 class="fw-bold mb-4">Internships</h2>
+            <h2 class="category-ribbon">Internships</h2>
 
             <div class="row g-4">
                 {% for scholarship in internships %}
@@ -333,7 +358,7 @@ endblock %} {% block content %}
 
         <!-- Fellowships -->
         <div class="mb-5">
-            <h2 class="fw-bold mb-4">Fellowships</h2>
+            <h2 class="category-ribbon">Fellowships</h2>
 
             <div class="row g-4">
                 {% for scholarship in fellowships %}
@@ -377,7 +402,7 @@ endblock %} {% block content %}
 
         <!-- Exchange Programs -->
         <div class="mb-5">
-            <h2 class="fw-bold mb-4">Exchange Programs</h2>
+            <h2 class="category-ribbon">Exchange Programs</h2>
 
             <div class="row g-4">
                 {% for scholarship in exchange_programs %}
@@ -421,7 +446,7 @@ endblock %} {% block content %}
 
         <!-- USA Scholarships -->
         <div class="mb-5">
-            <h2 class="fw-bold mb-4">USA Scholarships</h2>
+            <h2 class="category-ribbon">USA Scholarships</h2>
 
             <div class="row g-4">
                 {% for scholarship in usa_scholarships %}
@@ -465,7 +490,7 @@ endblock %} {% block content %}
 
         <!-- China Scholarships -->
         <div class="mb-5">
-            <h2 class="fw-bold mb-4">China Scholarships</h2>
+            <h2 class="category-ribbon">China Scholarships</h2>
 
             <div class="row g-4">
                 {% for scholarship in china_scholarships %}
@@ -509,7 +534,7 @@ endblock %} {% block content %}
 
         <!-- Japan Scholarships -->
         <div class="mb-5">
-            <h2 class="fw-bold mb-4">Japan Scholarships</h2>
+            <h2 class="category-ribbon">Japan Scholarships</h2>
 
             <div class="row g-4">
                 {% for scholarship in japan_scholarships %}
@@ -553,7 +578,7 @@ endblock %} {% block content %}
 
         <!-- Middle East Scholarships -->
         <div class="mb-5">
-            <h2 class="fw-bold mb-4">Middle East Scholarships</h2>
+            <h2 class="category-ribbon">Middle East Scholarships</h2>
 
             <div class="row g-4">
                 {% for scholarship in middle_east_scholarships %}
@@ -597,7 +622,7 @@ endblock %} {% block content %}
 
         <!-- Europe Scholarships -->
         <div class="mb-5">
-            <h2 class="fw-bold mb-4">Europe Scholarships</h2>
+            <h2 class="category-ribbon">Europe Scholarships</h2>
 
             <div class="row g-4">
                 {% for scholarship in europe_scholarships %}

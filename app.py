@@ -466,6 +466,18 @@ def edit_scholarship(id):
         scholarship=scholarship
     )
 
+@app.route("/admin/scholarship/share/<int:id>")
+def share_scholarship(id):
+    if "admin_id" not in session:
+        return redirect(url_for("admin_login"))
+
+    scholarship = Scholarship.query.get_or_404(id)
+
+    return render_template(
+        "share_scholarship.html",
+        scholarship=scholarship
+    )
+
 @app.route("/admin/scholarship/delete/<int:id>")
 def delete_scholarship(id):
 
